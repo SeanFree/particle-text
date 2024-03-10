@@ -6,6 +6,8 @@ Canvas animations are handled in a worker thread for optimized performance.
 
 Created from my codepen experiment [Particle Text](https://codepen.io/seanfree/pen/bGGyBYE).
 
+![Preview](./preview.png)
+
 ## Running Locally
 
 - Clone this repo
