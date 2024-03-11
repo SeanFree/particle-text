@@ -13,6 +13,8 @@ export default `(${function () {
     'bx',
     'by'
   ]
+  /** @type number */
+  let repelSize = 1
   /** @type OffscreenCanvasRenderingContext2D */
   let buffer
   /** @type CanvasRenderingContext2D */
@@ -196,9 +198,11 @@ export default `(${function () {
 
     function update () {
       if (hover) {
+        repelSize = lerp(repelSize, config.repelThreshold, 0.1)
         repel.x = lerp(repel.x, mouse.x, config.mLerpAmt)
         repel.y = lerp(repel.y, mouse.y, config.mLerpAmt)
       } else {
+        repelSize = lerp(repelSize, 1, 0.1)
         repel.x = lerp(repel.x, center.x, config.mLerpAmt)
         repel.y = lerp(repel.y, center.y, config.mLerpAmt)
       }
@@ -231,7 +235,10 @@ export default `(${function () {
 
     function bufferMessage () {
       // e.g. buffer.strokeText(...)
-      buffer[`${config.drawType}Text`](config.message, center.x, center.y)
+      buffer.save()
+      buffer.lineWidth = 0.5
+      buffer[`${config.drawType}Text`](config.message, center.x, center.y, config.width - 32)
+      buffer.restore()
     }
 
     function renderFrame () {
@@ -267,7 +274,7 @@ export default `(${function () {
       // angle to repel target
       const phi = angle(repel.x, repel.y, x, y)
       // force - amount of 'push' the repel target applies
-      const f = (pow(config.repelThreshold, 2) / rd) * (rd / config.repelThreshold)
+      const f = (pow(repelSize, 2) / rd) * (rd / repelSize)
 
       // delta x, y - delta between base position and current position
       const dx = bx - x
@@ -348,6 +355,9 @@ export default `(${function () {
       ctx.canvas.height = height
 
       ctx.drawImage(buffer.canvas, 0, 0)
+
+      mouse.x = center.x
+      mouse.y = center.y
     }
 
     function onMouseMove ({ x, y }) {
