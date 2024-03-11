@@ -37,7 +37,7 @@ All attributes are applied as strings; `object` | `array` | `number` attributes 
 |---|---|---|---|
 | `drawType` | `"fill"` \| `"stroke"` | Draw type for message. | `"stroke"` |
 | `backgroundColor` | `CSS <color>` | Canvas fill color. All CSS color formats are valid.  | `"rgb(5, 15, 20)"` |
-| `fontColor` | `CSS <color>` | Message color. Strigified RGBA array. All CSS color formats are valid. | `"rgb(60, 200, 255)"` |
+| `fontColor` | `CSS <color>` | Message color. All CSS color formats are valid. | `"rgb(60, 200, 255)"` |
 | `fontFamily` | `string` | Message font-family | `"monospace"` |
 | `fontSize` | `"number"` | Font size in pixels | `"40"` |
 | `textAlign` | `"center"` \| `"left"` \| `"right"` \| `"start"` \| `"end"` | Message text-align | `"center"` |
