@@ -31,7 +31,9 @@ export class ParticleText extends HTMLElement {
           display: block;
         }
       </style>
-      <canvas></canvas>
+      <canvas>
+        <slot></slot>
+      </canvas>
     `
   }
 
@@ -143,7 +145,11 @@ export class ParticleText extends HTMLElement {
   }
 
   get message () {
-    return this.attributes.message?.value || 'NO MESSAGE'
+    const slot = this.shadow.querySelector('slot')
+
+    return slot.assignedNodes()?.[0]?.textContent ||
+      this.attributes.message?.value ||
+      'NO MESSAGE'
   }
 
   get density () {

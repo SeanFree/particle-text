@@ -21,11 +21,16 @@ Created from my codepen experiment [Particle Text](https://codepen.io/seanfree/p
 ## Local builds
 
 - `npm run build`
-- Build files are placed in the `dist/` folder
 
 ## Usage
 
-`<particle-text {...attributes}></particle-text>`
+`<particle-text {...attributes}>{message?}</particle-text>`
+
+### Default Slot
+
+In addition to the `message` attribute, you can set a message by passing text to the default slot i.e. `<particle-text>Message Here</particle-text>`.
+
+If both the default slot and `message` attribute are applied, the default slot content will be displayed.
 
 ### Available Attributes
 
