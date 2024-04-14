@@ -26,6 +26,24 @@ Created from my codepen experiment [Particle Text](https://codepen.io/seanfree/p
 
 `<particle-text {...attributes}>{message?}</particle-text>`
 
+### Using the minified code
+
+Add a `<script>` tag to your page and copy paste the contents of `./ParticleText.min.js`:
+
+```html
+<script type="text/javascript">
+  <!-- code goes here -->
+</script>
+```
+
+Anywhere in your html code *after* this script, place a new `<particle-text>`:
+
+```html
+<particle-text fontSize="60">Particle Text</particle-text>
+```
+
+Modify visuals and behavior using attributes listed below.
+
 ### Default Slot
 
 In addition to the `message` attribute, you can set a message by passing text to the default slot i.e. `<particle-text>Message Here</particle-text>`.
